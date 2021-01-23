@@ -10,8 +10,8 @@ public class M03_UF1_PR01_MartinhodaSilvaJuan {
     do userMove - DONE
     do computerMove
     do gameBoardUpdated - DONE
-    do checkValidPlays (String.equalsIgnoreCase)
-    do when the game is won
+    do checkValidPlays - DONE
+    do when the game is won - DONE
     do menu - DONE
     do userWins / computerWins (matrix)
     do Bo3 / Bo5
@@ -206,7 +206,6 @@ public class M03_UF1_PR01_MartinhodaSilvaJuan {
                         } while (!inputCorrectUser);
                         numInput = input.nextInt();
                         input.nextLine();
-
 
                         if (board[numInput - 1].equals(String.valueOf(numInput))) { //check error controls between 1 and 9.
                             board[numInput - 1] = nextTurn;

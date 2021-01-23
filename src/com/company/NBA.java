@@ -14,7 +14,7 @@ public class NBA {
         final String WHITE = "\033[37m";
         final String RESET = "\u001B[0m";
 
-        final String menu = BLUE+"1-Introduïr jugador\n2-Mostrar Noms\n3-Mostrar taula sencera\n4-Buscar jugador\n5-Sortir";
+        final String menu = BLUE+"1-Introduïr jugador\n2-Mostrar Noms\n3-Mostrar taula sencera\n4-Buscar jugador\n5-Esborrar\n6-Sortir";
         final String logoLakers =
                 "                \"         ===///    , ,-. ,-   .-, , , ,-  ,_  ,  ,_ ,-\\n\" +\n" +
                         "                \"         --///    /_ |_/ _)  /\\\"\\\"|/|/ |_] /=_ /_ /=_ _)\\n\" +\n" +
@@ -86,6 +86,13 @@ public class NBA {
                     opcioSubMenu = llegir.nextInt();
                     llegir.nextLine();
 
+                    for (int i = 0; i < matriuJugadors.length; i++) {
+                        if (matriuJugadors[i][0] == null){
+                            punterJugador = i;
+                            break;
+                        }
+                    }
+
                     switch(opcioSubMenu){ // SubMenú
                         case 1: // Michael Jordan
                             matriuJugadors[punterJugador][0] = "Michael Jordan";
@@ -95,7 +102,6 @@ public class NBA {
                             matriuJugadors[punterJugador][4] = "63";
                             matriuJugadors[punterJugador][5] = "24";
 
-                            punterJugador++;
                             break;
                         case 2: // Kobe Bryant
                             matriuJugadors[punterJugador][0] = "Kobe Bryant";
@@ -105,7 +111,6 @@ public class NBA {
                             matriuJugadors[punterJugador][4] = "63";
                             matriuJugadors[punterJugador][5] = "24";
 
-                            punterJugador++;
                             break;
                         case 3:
                             String nom, alc, pes, pos, perc2, perc3;
@@ -153,8 +158,6 @@ public class NBA {
                                 matriuJugadors[punterJugador][3] = pos;
                                 matriuJugadors[punterJugador][4] = perc2;
                                 matriuJugadors[punterJugador][5] = perc3;
-
-                                punterJugador++;
                             }
 
                             break;
@@ -201,7 +204,33 @@ public class NBA {
                     }
 
                     break;
-                case 5: // sortir
+                case 5: // Esborrar
+                    int filaJugador = 0;
+                    trobat = false;
+                    System.out.println("Escriu un nom de jugador a esborrar");
+                    nomJugadorBuscar = llegir.nextLine();
+
+                    for (int i = 0; i < numJugadors; i++) {
+                        if (matriuJugadors[i][0] != null) {
+                            if (matriuJugadors[i][0].equalsIgnoreCase(nomJugadorBuscar)) {
+                                trobat = true;
+                                filaJugador = i;
+                                System.out.println(GREEN+"Aquest jugador existeix i es troba a la fila " + i);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (trobat == false){
+                        System.out.println(RED+"El nom de jugador buscat, no es troba a la taula i no s'esborrarà.");
+                    }else{ // Esborrarem
+                        System.out.println(GREEN+"Procedirem a esborrar el jugador...");
+                        for (int j = 0; j < matriuJugadors[filaJugador].length; j++) {
+                            matriuJugadors[filaJugador][j] = null;
+                        }
+                    }
+                    break;
+                case 6: // sortir
                     System.out.println("Sortint del programa... ");
                     sortir = true;
                     break;
