@@ -74,17 +74,22 @@ public class M03_UF1_PR01_MartinhodaSilvaJuan {
 
                     while (!winner) {
 
-                        int numInput;
+                        int numInput = 0;
 
                         do {
                             System.out.println("Write the position number for your movement..");
                             inputCorrectUser = input.hasNextInt();
                             if (!inputCorrectUser) {
                                 input.nextLine();
+                            } else {
+                                numInput = input.nextInt();
+                                input.nextLine();
+                            }
+                            if (numInput < 1 || numInput > 9) {
+                                System.out.println("Between 1 and 9.");
+                                inputCorrectUser = false;
                             }
                         } while (!inputCorrectUser);
-                        numInput = input.nextInt();
-                        input.nextLine();
 
                         if (board[numInput - 1].equals(String.valueOf(numInput))) { //check error controls between 1 and 9.
                             board[numInput - 1] = nextTurn;
@@ -193,7 +198,7 @@ public class M03_UF1_PR01_MartinhodaSilvaJuan {
 
                     while (!winner) {
 
-                        int numInput;
+                        int numInput = 0;
                         int computerInput = rand.nextInt(9) + 1;
 
 
@@ -202,10 +207,15 @@ public class M03_UF1_PR01_MartinhodaSilvaJuan {
                             inputCorrectUser = input.hasNextInt();
                             if (!inputCorrectUser) {
                                 input.nextLine();
+                            } else {
+                                numInput = input.nextInt();
+                                input.nextLine();
+                            }
+                            if (numInput < 1 || numInput > 9) {
+                                System.out.println("Between 1 and 9.");
+                                inputCorrectUser = false;
                             }
                         } while (!inputCorrectUser);
-                        numInput = input.nextInt();
-                        input.nextLine();
 
                         if (board[numInput - 1].equals(String.valueOf(numInput))) { //check error controls between 1 and 9.
                             board[numInput - 1] = nextTurn;
